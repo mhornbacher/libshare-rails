@@ -49,6 +49,11 @@ group :development, :test do
   gem "guard-rspec", require: false
 end
 
+#Authentication
+gem "devise"
+gem 'omniauth-facebook'
+
+# Misc
 gem "bootstrap-sass", "~> 3.1.1"
 gem "faker"
 gem "friendly_id"
