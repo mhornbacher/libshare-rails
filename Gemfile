@@ -46,10 +46,10 @@ group :development, :test do
   gem "database_cleaner"
   gem "pry"
   gem 'sqlite3'
-  gem "gaurd-rspec"
+  gem "guard-rspec", require: false
 end
 
-gem "bootstrap-scss", "~> 3.1.1"
+gem "bootstrap-sass", "~> 3.1.1"
 gem "faker"
 gem "friendly_id"
 
