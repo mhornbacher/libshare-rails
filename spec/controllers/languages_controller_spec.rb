@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-RSpec.describe LanguagesController, type: :controller do
+# RSpec.describe LanguagesController, type: :controller do
 
-end
+# end
