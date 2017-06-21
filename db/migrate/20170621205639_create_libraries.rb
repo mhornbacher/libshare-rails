@@ -1,13 +1,14 @@
 class CreateLibraries < ActiveRecord::Migration
   def change
     create_table :libraries do |t|
-      t.string :name
+      t.string :name, null: false
       t.string :version
       t.belongs_to :language, index: true
       t.belongs_to :framework, index: true
       t.text :description
       t.string :documentation_url
       t.string :library_url
+      t.belongs_to :user, index: true
 
       t.timestamps null: false
     end

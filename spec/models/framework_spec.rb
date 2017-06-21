@@ -11,5 +11,17 @@ RSpec.describe Framework, type: :model do
     expect(Framework.new).to respond_to(:name)
     expect(Framework.new).to respond_to(:description)
   end
+
+  it 'has_many libraries' do
+    lib = Library.create(name: "Omniauth", framework: @rails)
+    expect(@rails.libraries).to include(lib)
+  end
+  
+  it 'has_many languages through libraries' do
+    lib = Library.create(name: "Omniauth", framework: @rails, language: @ruby)
+    expect(@rails.languages).to include(@ruby)
+  end
+  
+  # More tests here
   
 end
