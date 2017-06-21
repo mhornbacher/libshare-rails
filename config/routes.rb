@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  resources :frameworks
+
   resources :languages
 
   devise_for :users, :controllers => {:omniauth_callbacks => 'callbacks'}
