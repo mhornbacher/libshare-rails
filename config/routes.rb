@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  resources :languages
+
   devise_for :users, :controllers => {:omniauth_callbacks => 'callbacks'}
 
   # The priority is based upon order of creation: first created -> highest priority.
