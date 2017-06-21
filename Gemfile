@@ -51,7 +51,7 @@ end
 
 #Authentication
 gem "devise"
-gem 'omniauth-facebook'
+gem 'omniauth-github'
 
 # Misc
 gem "bootstrap-sass", "~> 3.1.1"
