@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   devise :omniauthable, :omniauth_providers => [:github]
 
+  has_many :reviews
+
   def self.from_github(user_hash)
     binding.pry
   end

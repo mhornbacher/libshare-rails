@@ -4,6 +4,7 @@ RSpec.describe Library, type: :model do
   before(:each) do
     @rails = Framework.create(name: "Rails", description: "Convention wins!")
     @ruby = Language.create(name: "Ruby", description: "love the self") # but have occasional breakups
+    @user = User.create(email: Faker::Internet.free_email, password: "password")
   end
 
   describe "Properties" do
@@ -42,7 +43,9 @@ RSpec.describe Library, type: :model do
       expect(lib.user).to eq(User.last)
     end
 
-    xit "has_many Reviews" do
+    it "has_many Reviews" do
+      Review.create(user: @user, library: lib, rating: 5, comment: "too cool!")
+      expect(lib.reviews).to include(Review.last)
     end
     
   end
