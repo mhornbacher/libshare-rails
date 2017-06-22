@@ -4,6 +4,7 @@ RSpec.describe Library, type: :model do
   before(:each) do
     @rails = Framework.create(name: "Rails", description: "Convention wins!")
     @ruby = Language.create(name: "Ruby", description: "love the self") # but have occasional breakups
+    @devise = Library.create(name: "Devise", description: "authentication", language: @ruby, framework: @rails)
     @user = User.create(email: Faker::Internet.free_email, password: "password")
   end
 
@@ -43,6 +44,19 @@ RSpec.describe Library, type: :model do
     it "has_many Reviews" do
       Review.create(user: @user, library: lib, rating: 5, comment: "too cool!")
       expect(lib.reviews).to include(Review.last)
+    end
+    
+  end
+
+  describe "Functions" do
+    before(:each) do
+      @comment = Review.create(library: @devise, rating: 5, comment: "Testing comments")
+      @no_comment = Review.create(library: @devise, rating: 0, comment: "")
+    end
+
+    it 'can retrive all reviews with comments' do
+      expect(@devise.comments).to include(@comment)
+      expect(@devise.comments).to_not include(@no_comment)
     end
     
   end
