@@ -7,10 +7,7 @@
 <div class="row">
     <h1>Top 3 Frameworks <%= link_to "More...", frameworks_path, class: "right-link" %></h1>
     <% @top_frameworks.each do |framework| %>
-    <div class="col-md-4">
-        <h3><%= link_to framework.name, framework_path(framework)%> | <%= framework.average_rating %> <span class="glyphicon glyphicon-star"></span></h3>
-        <p><%=framework.description %></p>
-    </div>
+        <%= render partial: 'frameworks/col_display', locals: {framework: framework} %>
     <% end %>
 </div>
 <div class="row">

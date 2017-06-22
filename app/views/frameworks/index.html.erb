@@ -1,0 +1,9 @@
+<div class="jumbotron">
+    <h1>Frameworks</h1>
+    <p>That large thing in the closet</p>
+</div>
+<div class="row">
+    <% @frameworks.each do |framework| %>
+    <%= render partial: 'frameworks/col_display', locals: {framework: framework} %>
+    <% end %>
+</div>

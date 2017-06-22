@@ -40,7 +40,7 @@ RSpec.configure do |config|
   config.before(:each) do
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.start
-    load "#{Rails.root}/db/seeds.rb"
+    # load "#{Rails.root}/db/seeds.rb" # runs all the seeds, add this in again later?
   end
   
   # some js issues are taken care of here

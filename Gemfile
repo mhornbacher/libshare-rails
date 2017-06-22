@@ -52,6 +52,7 @@ end
 #Authentication
 gem "devise"
 gem 'omniauth-github'
+gem 'pundit'
 
 # Misc
 gem "bootstrap-sass", "~> 3.1.1"

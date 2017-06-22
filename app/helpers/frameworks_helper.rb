@@ -1,2 +1,2 @@
-module FrameworksHelper
+module FrameworksHelper  
 end
