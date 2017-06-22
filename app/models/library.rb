@@ -1,4 +1,5 @@
 class Library < ActiveRecord::Base
+  include Averagable
 
   # Relationships
   has_many :reviews

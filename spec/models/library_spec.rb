@@ -54,6 +54,10 @@ RSpec.describe Library, type: :model do
       @no_comment = Review.create(library: @devise, rating: 0, comment: "")
     end
 
+    it 'can calculate an average rating' do
+      expect(@devise.average_rating).to eq(2.5)
+    end
+
     it 'can retrive all reviews with comments' do
       expect(@devise.comments).to include(@comment)
       expect(@devise.comments).to_not include(@no_comment)
