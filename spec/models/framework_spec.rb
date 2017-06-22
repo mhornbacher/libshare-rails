@@ -32,8 +32,8 @@ RSpec.describe Framework, type: :model do
     
     it 'can calculate average_rating' do
       Review.create(rating: 5, library: @devise)
-      Review.create(rating: 0, library: @devise)
-      expect(@rails.average_rating).to eq(2.5)
+      Review.create(rating: 1, library: @devise)
+      expect(@rails.average_rating).to eq(3)
     end
     
   end

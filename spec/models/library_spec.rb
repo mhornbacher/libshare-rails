@@ -51,11 +51,11 @@ RSpec.describe Library, type: :model do
   describe "Functions" do
     before(:each) do
       @comment = Review.create(library: @devise, rating: 5, comment: "Testing comments")
-      @no_comment = Review.create(library: @devise, rating: 0, comment: "")
+      @no_comment = Review.create(library: @devise, rating: 1, comment: "")
     end
 
     it 'can calculate an average rating' do
-      expect(@devise.average_rating).to eq(2.5)
+      expect(@devise.average_rating).to eq(3)
     end
 
     it 'can retrive all reviews with comments' do
