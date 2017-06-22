@@ -29,7 +29,7 @@ RSpec.describe Language, type: :model do
 
   describe "Functions" do
 
-    it 'can calculate average_rating' do
+    it '#average_rating -> average rating accross all libraries' do
       Review.create(rating: 5, library: @devise)
       Review.create(rating: 1, library: @devise)
       expect(@ruby.average_rating).to eq(3)
