@@ -9,8 +9,8 @@
 first_user = User.create(email: "test@test.com", password: "password", username: "first!")
 
 ruby = Language.create(name: "Ruby", description: "love the self")
-python = Language.create(name: "Ruby", description: "A nice pseudocode runtime")
-javascript = Language.create(name: "Ruby", description: "A communist comune where all variables are shared with everyone else")
+python = Language.create(name: "Python", description: "A nice pseudocode runtime")
+javascript = Language.create(name: "JavaScript", description: "A communist comune where all variables are shared with everyone else")
 
 rails = Framework.create(name: "Rails", description: "That ruby thing")
 sinatra = Framework.create(name: "Sinatra", description: "That other ruby thing")

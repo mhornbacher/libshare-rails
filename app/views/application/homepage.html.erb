@@ -1,0 +1,10 @@
+<div class="jumbotron">
+</div>
+
+<% @top_frameworks.each do |framework| %>
+    <%= link_to framework.name, framework_path(framework)%>
+<% end %>
+<br/>
+<% @top_languages.each do |language| %>
+    <%= link_to language.name, framework_path(language)%>
+<% end %>
