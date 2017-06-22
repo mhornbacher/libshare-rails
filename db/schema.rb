@@ -45,12 +45,12 @@ ActiveRecord::Schema.define(version: 20170621214344) do
   add_index "libraries", ["language_id"], name: "index_libraries_on_language_id"
 
   create_table "reviews", force: :cascade do |t|
-    t.integer  "rating"
+    t.integer  "rating",     default: 1
     t.integer  "user_id"
     t.integer  "library_id"
     t.text     "comment"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   add_index "reviews", ["library_id"], name: "index_reviews_on_library_id"
