@@ -1,6 +1,7 @@
 <div class="jumbotron">
     <h1>Frameworks</h1>
     <p>That large thing in the closet</p>
+    <%= link_to "Create new framework", new_framework_path, class: "btn btn-success"%>
 </div>
 <div class="row">
     <% @frameworks.each do |framework| %>
