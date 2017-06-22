@@ -8,4 +8,7 @@ class Language < ActiveRecord::Base
 
     scope :most_popular, -> { joins(libraries: [:reviews]).group("languages.id").order('COUNT("reviews.id") DESC').distinct }
     scope :by_framework, -> framework {joins(libraries: [:reviews]).where("libraries.framework_id": framework).distinct }
+
+    validates :name, presence: true
+    
 end

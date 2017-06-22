@@ -74,6 +74,14 @@ RSpec.describe Framework, type: :model do
     end
     
   end
+
+
+  describe "Validations" do
+    it 'validats name is present' do
+      expect(Framework.new(name: "test")).to be_valid
+      expect(Framework.new).to_not be_valid
+    end
+  end
   
 
 end

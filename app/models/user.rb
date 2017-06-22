@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
 
   has_many :reviews
 
+  # validates :username, uniqueness: true #for some reasion this is validating presence as well
+
   def self.from_github(user_hash)
     binding.pry
   end

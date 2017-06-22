@@ -60,5 +60,12 @@ RSpec.describe Language, type: :model do
     end
     
   end
+
+  describe "Validations" do
+    it 'validats name is present' do
+      expect(Language.new(name: "test")).to be_valid
+      expect(Language.new).to_not be_valid
+    end
+  end
   
 end
