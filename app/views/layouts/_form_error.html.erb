@@ -1,0 +1,10 @@
+<% if record.errors.any? %>
+<div class="error_explanation alert alert-danger" role="alert">
+    <strong><%= pluralize(record.errors.count, "error" ) %> prevented this record from being saved:</strong>
+    <ul>
+        <% record.errors.full_messages.each do |msg| %>
+        <%= content_tag(:li, msg)%>
+        <% end %>
+    </ul>
+</div>
+<% end %>
