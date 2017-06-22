@@ -54,15 +54,26 @@ RSpec.describe Library, type: :model do
       @no_comment = Review.create(library: @devise, rating: 1, comment: "")
     end
 
-    it 'can calculate an average rating' do
+    it '#average rating -> the average rating from all reviews' do
       expect(@devise.average_rating).to eq(3)
     end
 
-    it 'can retrive all reviews with comments' do
+    it '#comments -> only reviews with comments' do
       expect(@devise.comments).to include(@comment)
       expect(@devise.comments).to_not include(@no_comment)
     end
     
+  end
+
+  describe "Scopes" do
+
+    it '#most_popular -> sorts by most popular' do
+      @omniauth = Library.create(name: "omniauth")
+      5.times{ Review.create(rating: 3, library: @omniauth) }
+      3.times{ Review.create(rating: 3, library: @devise)}
+      expect(Library.most_popular().to_ary).to eq([@omniauth, @devise])
+    end
+
   end
 
   describe "Validations" do
