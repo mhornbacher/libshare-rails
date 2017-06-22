@@ -7,8 +7,15 @@ class User < ActiveRecord::Base
 
   has_many :reviews
 
-  # validates :username, uniqueness: true #for some reasion this is validating presence as well
+  # validates :username, uniqueness: true #for some reasion this is validating presence as well  use next line
+  validates_uniqueness_of :username, allow_nil: true, allow_blank: true
 
+  # Instance methods
+  def display_name
+    !self.username.nil? ? self.username : self.email
+  end
+
+  # Class methods
   def self.from_github(user_hash)
     binding.pry
   end
