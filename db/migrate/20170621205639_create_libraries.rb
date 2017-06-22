@@ -8,7 +8,7 @@ class CreateLibraries < ActiveRecord::Migration
       t.text :description
       t.string :documentation_url
       t.string :library_url
-      t.belongs_to :user, index: true
+      t.integer :created_by_id, index: true
 
       t.timestamps null: false
     end

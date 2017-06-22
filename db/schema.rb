@@ -35,14 +35,14 @@ ActiveRecord::Schema.define(version: 20170621214344) do
     t.text     "description"
     t.string   "documentation_url"
     t.string   "library_url"
-    t.integer  "user_id"
+    t.integer  "created_by_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end
 
+  add_index "libraries", ["created_by_id"], name: "index_libraries_on_created_by_id"
   add_index "libraries", ["framework_id"], name: "index_libraries_on_framework_id"
   add_index "libraries", ["language_id"], name: "index_libraries_on_language_id"
-  add_index "libraries", ["user_id"], name: "index_libraries_on_user_id"
 
   create_table "reviews", force: :cascade do |t|
     t.integer  "rating"

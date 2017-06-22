@@ -36,11 +36,8 @@ RSpec.describe Library, type: :model do
     end
 
     it "has a user that is aliased with created_by" do
-      lib.user = User.first
-      expect(lib.created_by).to eq(User.first)
-
       lib.created_by = User.create(email: Faker::Internet.free_email, password: "password")
-      expect(lib.user).to eq(User.last)
+      expect(lib.created_by).to eq(User.last)
     end
 
     it "has_many Reviews" do
