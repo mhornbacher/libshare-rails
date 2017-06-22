@@ -6,7 +6,6 @@ RSpec.describe Framework, type: :model do
     @rails = Framework.create(name: "Rails", description: "Convention wins!")
     @ruby = Language.create(name: "Ruby", description: "love the self") # but have occasional breakups
     @devise = Library.create(name: "devise", description: "user auth taken care of", framework: @rails, language: @ruby)
-    @user = User.create(email: Faker::Internet.free_email, password: "password")
   end
 
   describe "Properties/Relationships" do
@@ -32,8 +31,8 @@ RSpec.describe Framework, type: :model do
   describe "Functions" do
     
     it 'can calculate average_rating' do
-      Review.create(rating: 5, user: @user, library: @devise)
-      Review.create(rating: 0, user: @user, library: @devise)
+      Review.create(rating: 5, library: @devise)
+      Review.create(rating: 0, library: @devise)
       expect(@rails.average_rating).to eq(2.5)
     end
     
