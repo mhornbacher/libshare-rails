@@ -9,6 +9,7 @@ class Library < ActiveRecord::Base
   belongs_to :created_by, :class_name => "User"
 
   # Validations
+  validates :name, presence: true
   validates :documentation_url, http_url: true
   validates :library_url, http_url: true
 
