@@ -27,7 +27,7 @@ pundit = Library.create(framework: rails, language: ruby, name: "Pundit", descri
 ujs = Library.create(framework: rails, language: javascript, name: "jQuery-ujs", description: "Bunch of jQuery tools", created_by: first_user)
 
 # Sinatra
-active_record = Library.create(framework: sinatra, language: rails, name: "ActiveRecord", description: "Simple ORM for Sinara and Rails", created_by: first_user)
+active_record = Library.create(framework: sinatra, language: ruby, name: "ActiveRecord", description: "Simple ORM for Sinara and Rails", created_by: first_user)
 
 # Django and Flask
 jet = Library.create(framework: django, language: python, name: "Jet", description: "Fancy admin real quick", created_by: first_user)
@@ -54,11 +54,11 @@ Review.create(library: cancan, rating: 4, user: first_user)
 Review.create(library: pundit, rating: 3, user: first_user)
 Review.create(library: ujs, rating: 5, user: first_user)
 #sinatra
-2.times do {Review.create(library: active_record, rating: 2, user: first_user)}
+2.times {Review.create(library: active_record, rating: 2, user: first_user)}
 #django
 Review.create(library: jet, rating: 5, user: first_user)
 Review.create(library: rest, rating: 4, user: first_user)
-Review.create(library: flsk_login, rating: 3, user: first_user)
+Review.create(library: flask_login, rating: 3, user: first_user)
 #jquery
 Review.create(library: svg_magic, rating: 2, user: first_user)
 Review.create(library: face_detection, rating: 2, user: first_user)

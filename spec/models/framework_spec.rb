@@ -51,7 +51,7 @@ RSpec.describe Framework, type: :model do
       @flask_assets.reviews.create(rating: 3)
       @django_rest.reviews.create(rating: 3)
 
-      3.times do
+      10.times do
         @devise.reviews.create(rating: 4)
       end
       
@@ -69,7 +69,7 @@ RSpec.describe Framework, type: :model do
       @django_jet.reviews.create(rating: 5)
       expect(Framework.by_language(@python).most_popular.first).to eq(@django)
 
-      2.times { @flask_assets.reviews.create(rating: 2) }
+      5.times { @flask_assets.reviews.create(rating: 2) }
       expect(Framework.by_language(@python).most_popular.first).to eq(@flask)
     end
     

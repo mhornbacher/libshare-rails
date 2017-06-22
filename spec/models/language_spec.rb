@@ -41,7 +41,7 @@ RSpec.describe Language, type: :model do
       @css = Language.create(name: "css")
       @bootstrap_sass = Library.create(name: "Bootstrap-sass", language: @css, framework: @rails)
 
-      2.times { Review.create(rating: 1, library: @devise)}
+      15.times { Review.create(rating: 1, library: @devise)}
       Review.create(rating: 5, library: @bootstrap_sass)
     end
     
