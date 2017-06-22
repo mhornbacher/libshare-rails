@@ -1,7 +1,8 @@
 <div class="row">
     <div class="col-md-10">
         <h1><%= @framework.name %> | <%= @framework.average_rating %> <span class="glyphicon glyphicon-star"></span></h1>
-        <h4><%= @framework.description %></h4>
+        <p><strong>Built with:</strong> <%= @framework.languages.pluck(:name).join(", ") %></p>
+        <h4><strong>Description:</strong> <%= @framework.description %></h4>
     </div>
     <div class="col-md-2">
         <h3>Options:</h3>

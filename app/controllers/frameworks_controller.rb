@@ -14,11 +14,30 @@ class FrameworksController < ApplicationController
     
     def edit
     end
+
+    def create
+        @framework = Framework.new(post_params)
+        @framework.save ? redirect_to(framework_path(@framework)) : render(:new)
+    end
+    
+    def update
+        @framework.update(post_params)
+        @framework.valid? ? redirect_to(framework_path(@framework)) : render(:edit)
+    end
+    
+    def destroy
+        @framework.destroy
+        redirect_to frameworks_path
+    end
     
 
     private 
     def load_framework
         @framework = Framework.find(params[:id])
+    end
+
+    def post_params
+        params.require(:framework).permit(:name, :descripton)
     end
     
 end
