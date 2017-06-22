@@ -17,7 +17,21 @@ class User < ActiveRecord::Base
 
   # Class methods
   def self.from_github(user_hash)
-    binding.pry
+    # if we get an email from github lets use that
+    if user_hash[:info][:email]
+      where(email: user_hash[:info][:email]).first_or_create{ |user| self.from_github_fill(user, user_hash) }
+    else
+      where(provider: user_hash[:provider], uid: user_hash[:uid]).first_or_create{ |user| self.from_github_fill(user, user_hash) }
+    end
   end
 
+  # seperate duplicate code for setting up user
+  private
+  def self.from_github_fill(user, user_hash)
+    user.provider = user_hash[:provider]
+    user.uid = user_hash[:uid]
+    user.email = user_hash[:info][:email]
+    user.username = user_hash[:info][:nickname]
+    user.password = SecureRandom.hex
+  end
 end

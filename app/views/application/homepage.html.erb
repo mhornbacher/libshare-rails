@@ -1,10 +1,25 @@
 <div class="jumbotron">
+<h1>LibShare</h1>
+<h3>The <em>#10</em> source for all your library searching and sharing needs</h3>
+<%= button_to "Sign up", new_user_registration_path, method: :get, class: "btn btn-primary"%>
 </div>
 
-<% @top_frameworks.each do |framework| %>
-    <%= link_to framework.name, framework_path(framework)%>
-<% end %>
-<br/>
-<% @top_languages.each do |language| %>
-    <%= link_to language.name, framework_path(language)%>
-<% end %>
+<div class="row">
+    <h1>Top 3 Frameworks <%= link_to "More...", frameworks_path, class: "right-link" %></h1>
+    <% @top_frameworks.each do |framework| %>
+    <div class="col-md-4">
+        <h3><%= link_to framework.name, framework_path(framework)%> | <%= framework.average_rating %> <span class="glyphicon glyphicon-star"></span></h3>
+        <p><%=framework.description %></p>
+    </div>
+    <% end %>
+</div>
+<div class="row">
+    <h1>Top 3 Languages <%= link_to "More...", languages_path, class: "right-link" %></h1>
+    <% @top_languages.each do |language| %>
+    <div class="col-md-4">
+        <h3><%= link_to language.name, language_path(language)%> | <%= language.average_rating %> <span class="glyphicon glyphicon-star"></span></h3>
+        <p><%= language.description %></p>
+    </div>
+    
+    <% end %>
+</div>

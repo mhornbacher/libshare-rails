@@ -19,4 +19,13 @@
   
  */
  
-@import "bootstrap"
+@import "bootstrap";
+
+a.right-link {
+    font-size: .5em;
+    color: #222;
+}
+
+p.navbar-text{
+    padding-left: 15px;
+}
