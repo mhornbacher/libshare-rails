@@ -64,5 +64,23 @@ RSpec.describe Library, type: :model do
     end
     
   end
+
+  describe "Validations" do
+    
+    it 'validates that the documentation_url is valid' do
+      expect(Library.new(documentation_url: "")).to be_valid
+      expect(Library.new(documentation_url: "http://test.com")).to be_valid
+      expect(Library.new(documentation_url: "https://test.com")).to be_valid
+      expect(Library.new(documentation_url: "test.com")).to_not be_valid
+    end
+
+    it 'validates that the library_url is valid' do
+      expect(Library.new(library_url: "")).to be_valid
+      expect(Library.new(library_url: "http://test.com")).to be_valid
+      expect(Library.new(library_url: "https://test.com")).to be_valid
+      expect(Library.new(library_url: "test.com")).to_not be_valid
+    end
+
+  end
   
 end

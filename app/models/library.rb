@@ -8,6 +8,10 @@ class Library < ActiveRecord::Base
   belongs_to :framework
   belongs_to :created_by, :class_name => "User"
 
+  # Validations
+  validates :documentation_url, http_url: true
+  validates :library_url, http_url: true
+
   def comments
     self.reviews.where.not(comment: nil).where.not(comment: "")
   end
