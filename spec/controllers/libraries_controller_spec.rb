@@ -40,8 +40,8 @@ RSpec.describe LibrariesController, type: :controller do
 
         it 'shows the average_rating, vote_count, and comment_count' do
             expect(response.body).to include(@lib.average_rating.to_i.to_s)
-            expect(response.body).to include(@lib.vote_count)
-            expect(response.body).to include(@lib.comment_count)
+            expect(response.body).to include(@lib.vote_count.to_s)
+            expect(response.body).to include(@lib.comment_count.to_s)
         end
 
         it 'shows link to framework' do

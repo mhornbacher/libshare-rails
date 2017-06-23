@@ -10,6 +10,7 @@ class LibrariesController < ApplicationController
     end
 
     def show
+        @comment = @library.reviews.build
     end
 
     def new

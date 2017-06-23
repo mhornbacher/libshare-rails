@@ -36,7 +36,7 @@ list = Library.create(framework: react, language: javascript, name: "React List"
 
 
 # Reviews - Rails
-Review.create(library: devise, rating: 2, user: first_user)
+Review.create(library: devise, rating: 2, user: first_user, comment: "Really Great framework")
 Review.create(library: cancan, rating: 4, user: first_user)
 Review.create(library: pundit, rating: 3, user: first_user)
 Review.create(library: ujs, rating: 5, user: first_user)

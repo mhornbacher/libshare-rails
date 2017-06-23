@@ -1,0 +1,29 @@
+<h1>
+    <%= @library.name %> | <%= number_to_human(@library.average_rating) %> <span class="glyphicon glyphicon-star"></span>
+</h1>
+<%= content_tag(:h4, ("version: #{@library.version}" if @library.version)) %>
+
+<h4>
+    <%= pluralize(@library.vote_count, "vote") %> | <%= pluralize(@library.comment_count, "comment") %>
+</h4>
+<h4>
+    Library: <%= link_to(@library.language.name, language_path(@library.language)) %>,
+    Framework: <%= link_to(@library.framework.name, framework_path(@library.framework)) %>
+</h4>
+<p><%= link_to "Documentation", @library.documentation_url %>, <%= link_to "Project page", @library.library_url %></p>
+
+<h3><b>Description:</b></h3>
+<p><%= @library.description %></p>
+<hr>
+
+<% if @library.comment_count > 0 %>
+<h2>Comments</h2>
+    <ul>
+    <%= render partial: 'reviews/comment_li', collection: @library.comments, as: :comment %>
+    </ul>
+<% end %>
+
+<% if user_signed_in? %>
+<h3>Create Comment</h3>
+<%= render 'reviews/inline_form' %>
+<% end %>
