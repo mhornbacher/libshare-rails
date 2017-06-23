@@ -11,7 +11,6 @@ RSpec.describe FrameworksController, type: :controller do
         it 'shows a list of frameworks' do
             framework = Framework.first
             expect(response.body).to include(framework.name)
-            expect(response.body).to include(framework.description)
         end
         
         it 'shows each frameworks average_rating' do

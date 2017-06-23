@@ -11,7 +11,6 @@ RSpec.describe LanguagesController, type: :controller do
         it 'shows a list of languages' do
             language = Language.first
             expect(response.body).to include(language.name)
-            expect(response.body).to include(language.description)
         end
         
         it 'shows each language average_rating' do
