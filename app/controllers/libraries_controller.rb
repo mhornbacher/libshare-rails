@@ -1,5 +1,6 @@
 class LibrariesController < ApplicationController
     before_action :load_library, only: [:show, :edit, :update, :destroy]
+    before_action :authenticate_user!, :except => [:show, :index]
     
     def index
         @libraries = Library.most_recent
