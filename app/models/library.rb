@@ -20,4 +20,13 @@ class Library < ActiveRecord::Base
   def comments
     self.reviews.where.not(comment: nil).where.not(comment: "")
   end
+
+  def vote_count
+    self.reviews.count
+  end
+  
+  def comment_count
+    self.comments.count
+  end
+  
 end

@@ -15,7 +15,7 @@ RSpec.describe LibrariesController, type: :controller do
         end
 
         it 'shows each librarys average rating' do
-            expect(response.body).to include(@lib.average_rating.to_s)
+            expect(response.body).to include(@lib.average_rating.to_i.to_s)
         end
         
         it 'has a link to create a new framework' do

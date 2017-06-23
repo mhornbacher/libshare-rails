@@ -64,12 +64,12 @@ RSpec.describe Library, type: :model do
       expect(@devise.comments).to_not include(@no_comment)
     end
 
-    it '#comments_count -> returns the number of comments on the library' do
-      expect(@devise.comments_count).to eq(2)
+    it '#comment_count -> returns the number of comments on the library' do
+      expect(@devise.comment_count).to eq(1)
     end
     
     it '#vote_count -> returns the total number of reviews' do
-      expect(@devise.vote_count).to eq(3)
+      expect(@devise.vote_count).to eq(3) # one more no comment review comes form the seeds.rb file
     end
     
   end
