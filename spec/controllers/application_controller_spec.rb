@@ -56,12 +56,14 @@ RSpec.describe ApplicationController, type: :controller do
         end
         
         context 'logged_out' do
-            it 'shows a log out link' do
+            it 'shows a sign in link' do
                 expect(response.body).to include("/sign_in")
+                expect(response.body).to include("Sign in")
             end
 
-            it 'shows a log out link' do
+            it 'shows a sign up link' do
                 expect(response.body).to include("/sign_up")
+                expect(response.body).to include("Sign up")
             end
         end
         

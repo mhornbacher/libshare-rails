@@ -1,6 +1,6 @@
 class LanguagesController < ApplicationController
 
-    before_action :load_languages, only: [:show, :edit, :update, :destroy]
+    before_action :load_language, only: [:show, :edit, :update, :destroy]
 
     def index
         @languages = Language.order('updated_at DESC')
@@ -32,7 +32,7 @@ class LanguagesController < ApplicationController
     end
     
     private 
-    def load_languages
+    def load_language
         @language = Language.find(params[:id])
     end
 
