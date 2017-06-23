@@ -1,0 +1,4 @@
+<div class="col-md-4 col-full-height">
+    <h3><%= link_to record.name, self.send("#{record.class.to_s.downcase}_path", record)%> | <%= number_to_human(record.average_rating) %> <span class="glyphicon glyphicon-star"></span></h3>
+    <p><%= truncate(record.description, length: 50, separator: ' ') %></p>
+</div>

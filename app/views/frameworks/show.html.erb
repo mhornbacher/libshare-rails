@@ -14,5 +14,5 @@
     <div class="col-md-12">
         <h2>Libraries</h2>
     </div>
-    <%= render partial: 'libraries/col_display', collection: @framework.libraries, :as => :library %>
+    <%= render partial: 'layouts/item_col_display', collection: @framework.libraries, :as => :record %>
 </div>

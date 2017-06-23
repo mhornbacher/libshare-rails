@@ -4,7 +4,5 @@
     <%= link_to "Create new framework", new_framework_path, class: "btn btn-success"%>
 </div>
 <div class="row">
-    <% @frameworks.each do |framework| %>
-    <%= render partial: 'frameworks/col_display', locals: {framework: framework} %>
-    <% end %>
+    <%= render partial: 'layouts/item_col_display', collection: @frameworks, :as => :record %>
 </div>

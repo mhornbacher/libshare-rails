@@ -2,7 +2,7 @@ class FrameworksController < ApplicationController
     before_action :load_framework, only: [:show, :edit, :update, :destroy]
 
     def index
-        @frameworks = Framework.all
+        @frameworks = Framework.order('updated_at DESC')
     end
 
     def show

@@ -6,14 +6,14 @@
 
 <div class="row">
     <h1>Most Popular Frameworks <%= link_to "More...", frameworks_path, class: "right-link" %></h1>
-    <%= render partial: 'frameworks/col_display', collection: @top_frameworks, :as => :framework %>
+    <%= render partial: 'layouts/item_col_display', collection: @top_frameworks, :as => :record %>
 </div>
 <div class="row">
     <h1>Most Popular Languages <%= link_to "More...", languages_path, class: "right-link" %></h1>
-    <%= render partial: 'languages/col_display', collection: @top_languages, :as => :language %>
+    <%= render partial: 'layouts/item_col_display', collection: @top_languages, :as => :record %>
 </div>
 
 <div class="row">
     <h1>Most Popular Libraries <%= link_to "More...", libraries_path, class: "right-link" %></h1>
-    <%= render partial: 'libraries/col_display', collection: @top_libraries, :as => :library %>
+    <%= render partial: 'layouts/item_col_display', collection: @top_libraries, :as => :record %>
 </div>
