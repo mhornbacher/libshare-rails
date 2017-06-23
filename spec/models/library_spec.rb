@@ -51,8 +51,8 @@ RSpec.describe Library, type: :model do
 
   describe "Functions" do
     before(:each) do
-      @comment = Review.create(library: @devise, rating: 5, comment: "Testing comments")
-      @no_comment = Review.create(library: @devise, rating: 1, comment: "")
+      @comment = Review.create(library: @devise, rating: 5, comment: "Testing comments", user: @user)
+      @no_comment = Review.create(library: @devise, rating: 1, comment: "", user: @user)
     end
 
     it '#average rating -> the average rating from all reviews' do
@@ -65,7 +65,7 @@ RSpec.describe Library, type: :model do
     end
 
     it '#comment_count -> returns the number of comments on the library' do
-      expect(@devise.comment_count).to eq(1)
+      expect(@devise.comment_count).to eq(2)
     end
     
     it '#vote_count -> returns the total number of reviews' do

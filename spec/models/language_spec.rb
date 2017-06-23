@@ -48,7 +48,7 @@ RSpec.describe Language, type: :model do
     it '#by_framework.most_popular -> most popular by reviews tied to this framework' do
       css = Language.create(name: "CSS")
       bootstrap = css.libraries.create(name: "Bootstrap", framework: @rails)
-      5.times {bootstrap.reviews.create(rating: 3)}
+      5.times {bootstrap.reviews.create(rating: 3, user: User.first)}
 
       expect(Language.by_framework(@rails).most_popular.pluck(:name)).to eq(["CSS", "Ruby", "JavaScript"])
     end

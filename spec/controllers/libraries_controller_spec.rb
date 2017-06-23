@@ -62,7 +62,7 @@ RSpec.describe LibrariesController, type: :controller do
         end
 
         it 'displays its comments' do
-            @lib.reviews.create(rating: 3, comment: "test comment")
+            @lib.reviews.create(rating: 3, comment: "test comment", user: User.first)
             # reload the page
             get :show, id: @lib.id
             expect(response.body).to include("test comment")
