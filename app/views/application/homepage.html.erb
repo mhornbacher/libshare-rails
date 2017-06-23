@@ -1,31 +1,19 @@
 <div class="jumbotron">
     <h1>LibShare</h1>
     <h3>The <em>#10</em> source for all your library searching and sharing needs</h3>
-    <%= button_to "Sign up", new_user_registration_path, method: :get, class: "btn btn-primary"%>
+    <%= button_to "Sign up", new_user_registration_path, method: :get, class: "btn btn-primary" unless user_signed_in? %>
 </div>
 
 <div class="row">
     <h1>Most Popular Frameworks <%= link_to "More...", frameworks_path, class: "right-link" %></h1>
-    <% @top_frameworks.each do |framework| %>
-        <%= render partial: 'frameworks/col_display', locals: {framework: framework} %>
-    <% end %>
+    <%= render partial: 'frameworks/col_display', collection: @top_frameworks, :as => :framework %>
 </div>
 <div class="row">
     <h1>Most Popular Languages <%= link_to "More...", languages_path, class: "right-link" %></h1>
-    <% @top_languages.each do |language| %>
-        <div class="col-md-4">
-            <h3><%= link_to language.name, language_path(language)%> | <%= language.average_rating %> <span class="glyphicon glyphicon-star"></span></h3>
-            <p><%= language.description %></p>
-        </div>
-    <% end %>
+    <%= render partial: 'languages/col_display', collection: @top_languages, :as => :language %>
 </div>
 
 <div class="row">
     <h1>Most Popular Libraries <%= link_to "More...", libraries_path, class: "right-link" %></h1>
-    <% @top_libraries.each do |library| %>
-        <div class="col-md-4">
-            <h3><%= link_to library.name, library_path(library)%> | <%= library.average_rating %> <span class="glyphicon glyphicon-star"></span></h3>
-            <p><%= library.description %></p>
-        </div>
-    <% end %>
+    <%= render partial: 'libraries/col_display', collection: @top_libraries, :as => :library %>
 </div>

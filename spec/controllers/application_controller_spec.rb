@@ -8,6 +8,10 @@ RSpec.describe ApplicationController, type: :controller do
         before(:each) do
             get :homepage
         end
+
+        it 'has a 200 status code' do
+            expect(response.status).to eq(200)
+        end
         
         it 'lists popular frameworks' do
             top_frameworks = Framework.most_popular.limit(3)
@@ -33,13 +37,32 @@ RSpec.describe ApplicationController, type: :controller do
         context 'logged_in' do
             before(:each) do
                 @user = User.first
-                login(@user)
+                sign_in @user
+                get :homepage
+            end
+
+            it 'shows the display name for the user' do
+                expect(response.body).to include(@user.display_name)
+            end
+
+            it 'shows a log out link' do
+                expect(response.body).to include("/sign_out")
+            end
+
+            it 'does not show the sign up button or link' do
+                expect(response.body).to_not include("/sign_up")
             end
             
         end
         
         context 'logged_out' do
+            it 'shows a log out link' do
+                expect(response.body).to include("/sign_in")
+            end
 
+            it 'shows a log out link' do
+                expect(response.body).to include("/sign_up")
+            end
         end
         
     end

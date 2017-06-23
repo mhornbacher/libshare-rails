@@ -12,7 +12,7 @@ Specs:
 - [x] Include signup (Devise)
 - [x] Include login (Devise)
 - [x] Include logout (Devise)
-- [ ] Include third party signup/login (Devise/OmniAuth -> Github)
+- [x] Include third party signup/login (Devise/OmniAuth -> Github)
 - [ ] Include nested resource show or index (URL e.g. users/2/recipes)
 - [ ] Include nested resource "new" form (URL e.g. recipes/1/ingredients)
 - [ ] Include form display of validation errors (form URL e.g. /recipes/new)

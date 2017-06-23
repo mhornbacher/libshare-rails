@@ -1,4 +1,4 @@
-<div class="col-md-4">
-    <h3><%= link_to framework.name, framework_path(framework)%> | <%= framework.average_rating %> <span class="glyphicon glyphicon-star"></span></h3>
-    <p><%=framework.description %></p>
+<div class="col-md-4 col-full-height">
+    <h3><%= link_to framework.name, framework_path(framework)%> | <%= number_to_human(framework.average_rating) %> <span class="glyphicon glyphicon-star"></span></h3>
+    <p><%= truncate(framework.description, length: 50, separator: ' ') %></p>
 </div>

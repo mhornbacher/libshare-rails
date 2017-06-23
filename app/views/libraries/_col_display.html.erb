@@ -1,0 +1,4 @@
+<div class="col-md-4 col-full-height">
+    <h3><%= link_to library.name, library_path(library)%> | <%= number_to_human(library.average_rating) %> <span class="glyphicon glyphicon-star"></span></h3>
+    <p><%= truncate(library.description, length: 50, separator: ' ') %></p>
+</div>
