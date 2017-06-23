@@ -24,6 +24,16 @@ RSpec.describe User, type: :model do
       expect(@user.reviews).to include(rev1, rev2)
     end
 
+    it 'has a role that defaults to user' do
+      expect(User.new.role).to eq("user")
+      expect(User.new.user?).to eq(true)
+    end
+
+    it 'role => 10 is admin' do
+      expect(User.new(role: 10).role).to eq("admin")
+      expect(User.new(role: 10).admin?).to eq(true)
+    end
+
   end
 
   describe "Functions" do
