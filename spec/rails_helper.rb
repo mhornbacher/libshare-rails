@@ -28,6 +28,9 @@ ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
 
+  # this takes care of the devise user during testing. preventing some interesing errors
+  config.include Devise::TestHelpers, type: :controller
+
   # this adds login_as(@user) and logout
   config.include Warden::Test::Helpers
 
@@ -40,7 +43,7 @@ RSpec.configure do |config|
   config.before(:each) do
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.start
-    # load "#{Rails.root}/db/seeds.rb" # runs all the seeds, add this in again later?
+    load "#{Rails.root}/db/seeds.rb" # runs all the seeds, add this in again later?
   end
   
   # some js issues are taken care of here

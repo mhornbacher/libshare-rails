@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   def homepage
     @top_frameworks = Framework.most_popular.limit(3)
     @top_languages = Language.most_popular.limit(3)
+    @top_libraries = Library.most_popular.limit(3)
   end
   
 end

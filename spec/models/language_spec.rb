@@ -2,9 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Language, type: :model do
   before(:each) do
-    @rails = Framework.create(name: "Rails", description: "Convention wins!")
-    @ruby = Language.create(name: "Ruby", description: "love the self") # but have occasional breakups
-    @devise = Library.create(name: "devise", description: "user auth taken care of", framework: @rails, language: @ruby)
+    @rails = Framework.first
+    @ruby = Language.first
+    @javascript = Language.last
+    @devise = Library.find_by(name: "Devise")
   end
 
   describe "Properties/Relationships" do
@@ -17,7 +18,7 @@ RSpec.describe Language, type: :model do
     it 'has_many libraries' do
       lib = Library.create(name: "Omniauth", language: @ruby)
       expect(@ruby.libraries).to include(lib)
-      expect(@ruby.libraries.count).to eq(2)
+      expect{Library.create(name: "omniauth-github", language: @ruby)}.to change {@ruby.libraries.count}.by(1)
     end
     
     it 'has_many frameworks through libraries' do
@@ -30,39 +31,32 @@ RSpec.describe Language, type: :model do
   describe "Functions" do
 
     it '#average_rating -> average rating accross all libraries' do
-      Review.create(rating: 5, library: @devise)
-      Review.create(rating: 1, library: @devise)
-      expect(@ruby.average_rating).to eq(3)
+      expect(@ruby.average_rating).to eq(2.75)
     end
   end
 
   describe "Scopes" do
-    before(:each) do
-      @css = Language.create(name: "css")
-      @bootstrap_sass = Library.create(name: "Bootstrap-sass", language: @css, framework: @rails)
+    
+    it '#most popular -> most popular by review count' do
+      expect(Language.most_popular.to_ary).to eq([@javascript, @ruby])
+    end
+    
+    it '#by_framework -> all the languages with a given framework' do
+      expect(Language.by_framework(@rails)).to include(@ruby, @javascript)
+    end
+    
+    it '#by_framework.most_popular -> most popular by reviews tied to this framework' do
+      css = Language.create(name: "CSS")
+      bootstrap = css.libraries.create(name: "Bootstrap", framework: @rails)
+      5.times {bootstrap.reviews.create(rating: 3)}
 
-      15.times { Review.create(rating: 1, library: @devise)}
-      Review.create(rating: 5, library: @bootstrap_sass)
-    end
-    
-    it 'can get the most popular' do
-      expect(Language.most_popular.first).to eq(@ruby)
-    end
-    
-    it 'can get get all the languages for a given framework' do
-      expect(Language.by_framework(@rails)).to include(@ruby, @css)
-    end
-    
-    it 'can get the most popular language for a given framework' do
-      res = Language.by_framework(@rails).most_popular
-      expect(res.first).to eq(@ruby)
-      expect(res.last).to eq(@css)
+      expect(Language.by_framework(@rails).most_popular.pluck(:name)).to eq(["CSS", "Ruby", "JavaScript"])
     end
     
   end
 
   describe "Validations" do
-    it 'validats name is present' do
+    it 'validats #name is present' do
       expect(Language.new(name: "test")).to be_valid
       expect(Language.new).to_not be_valid
     end

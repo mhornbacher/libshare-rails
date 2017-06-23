@@ -19,3 +19,13 @@
         </div>
     <% end %>
 </div>
+
+<div class="row">
+    <h1>Most Popular Libraries <%= link_to "More...", libraries_path, class: "right-link" %></h1>
+    <% @top_libraries.each do |library| %>
+        <div class="col-md-4">
+            <h3><%= link_to library.name, library_path(library)%> | <%= library.average_rating %> <span class="glyphicon glyphicon-star"></span></h3>
+            <p><%= library.description %></p>
+        </div>
+    <% end %>
+</div>

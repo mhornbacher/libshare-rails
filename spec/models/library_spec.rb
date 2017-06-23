@@ -2,9 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Library, type: :model do
   before(:each) do
-    @rails = Framework.create(name: "Rails", description: "Convention wins!")
-    @ruby = Language.create(name: "Ruby", description: "love the self") # but have occasional breakups
-    @devise = Library.create(name: "Devise", description: "authentication", language: @ruby, framework: @rails)
+    @rails = Framework.first
+    @ruby = Language.first
+    @javascript = Language.last
+    @devise = Library.find_by(name: "Devise")
     @user = User.create(email: Faker::Internet.free_email, password: "password")
   end
 
@@ -55,7 +56,7 @@ RSpec.describe Library, type: :model do
     end
 
     it '#average rating -> the average rating from all reviews' do
-      expect(@devise.average_rating).to eq(3)
+      expect(@devise.average_rating).to eq(2.66666666666667)
     end
 
     it '#comments -> only reviews with comments' do
@@ -68,10 +69,7 @@ RSpec.describe Library, type: :model do
   describe "Scopes" do
 
     it '#most_popular -> sorts by most popular' do
-      @omniauth = Library.create(name: "omniauth")
-      5.times{ Review.create(rating: 3, library: @omniauth) }
-      3.times{ Review.create(rating: 3, library: @devise)}
-      expect(Library.most_popular().to_ary).to eq([@omniauth, @devise])
+      expect(Library.most_popular.limit(3).pluck(:name)).to eq(["Devise", "CanCanCan", "Pundit"])
     end
 
   end
