@@ -18,10 +18,7 @@
             Language: <%= link_to(@library.language.name, language_path(@library.language)) %><br/> 
             Framework: <%= link_to(@library.framework.name, framework_path(@library.framework)) %>
         </p>
-        <% if user_signed_in? %>
-        <%= link_to "Edit", edit_library_path(@library), class: "btn btn-primary" %>
-        <%= link_to "Delete", library_path(@library), method: :delete, class: "btn btn-danger" %>
-        <% end %>
+        <%= edit_and_delete_links_for(@library) %>
     </div>
 </div>
 <hr>

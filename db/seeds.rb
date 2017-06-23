@@ -7,6 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 first_user = User.create(email: "test@test.com", password: "password", username: "first!")
+User.create(email: "admin@admin.net", password: "password", username: "admin_main", role: 10)
 
 ruby = Language.create(name: "Ruby", description: "love the self")
 javascript = Language.create(name: "JavaScript", description: "A communist comune where all variables are shared with everyone else")
