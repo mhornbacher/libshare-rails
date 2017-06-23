@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
 
   has_many :reviews
 
+  enum role: {user: 0, admin: 10}
+
   # validates :username, uniqueness: true #for some reasion this is validating presence as well  use next line
   validates_uniqueness_of :username, allow_nil: true, allow_blank: true
 
