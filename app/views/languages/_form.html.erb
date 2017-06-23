@@ -1,0 +1,9 @@
+<%= render partial: "layouts/form_error", locals: {record: @language} %>
+
+<%= form_for(@language) do |f| %>
+    <%= f.label :name, "Language Name: "%>
+    <%= f.text_field :name, class: "form-control", placeholder: "Language name" %><br/>
+    <%= f.label :name, "Language Description: "%>
+    <%= f.text_area :description, class: "form-control", placeholder: "Language Description" %><br/>
+    <%= f.submit class: "btn btn-primary" %>
+<% end %>

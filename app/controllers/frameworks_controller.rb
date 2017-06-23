@@ -37,7 +37,7 @@ class FrameworksController < ApplicationController
     end
 
     def post_params
-        params.require(:framework).permit(:name, :descripton)
+        params.require(:framework).permit(:name, :description)
     end
     
 end
