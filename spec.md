@@ -7,7 +7,7 @@ Specs:
 - [x] Include at least one has_many through relationship (Framework has_many Languages through Libraries)
 - [x] The "through" part of the has_many through includes at least one user submittable attribute (library.name)
 - [x] Include reasonable validations for simple model objects (User, Library, Review, Framework, Language)
-- [ ] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
+- [x] Include a class level ActiveRecord scope method (Library.most_popular URL: /libraries/most_popular)
 - [ ] Include a nested form writing to an associated model using a custom attribute writer (form URL, model name e.g. /recipe/new, Item)
 - [x] Include signup (Devise)
 - [x] Include login (Devise)
