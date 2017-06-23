@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   root 'application#homepage'
 
+  get '/libraries/most_popular' => 'libraries#most_popular', as: :most_popular_libraries
+
   resources :libraries
 
   resources :frameworks
