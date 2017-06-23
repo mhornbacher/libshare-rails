@@ -30,7 +30,11 @@ class User < ActiveRecord::Base
   def self.from_github_fill(user, user_hash)
     user.provider = user_hash[:provider]
     user.uid = user_hash[:uid]
-    user.email = Faker::Internet.free_email
+    if user_hash[:info][:email]
+      user.email = user_hash[:info][:email]
+    else
+      user.email = Faker::Internet.free_email
+    end
     user.username = user_hash[:info][:nickname]
     user.password = SecureRandom.hex
   end
