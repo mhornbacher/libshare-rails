@@ -11,8 +11,7 @@ RSpec.describe LibrariesController, type: :controller do
         end
         
         it 'shows links to libraries' do
-            
-            expect(response.body).to have_link(@lib.name href: library_path(@lib))
+            expect(response.body).to have_link(@lib.name, href: library_path(@lib))
         end
 
         it 'shows each librarys average rating' do

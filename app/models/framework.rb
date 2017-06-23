@@ -1,5 +1,6 @@
 class Framework < ActiveRecord::Base
     include Averagable
+    include Recentable
 
     has_many :libraries
     has_many :languages, through: :libraries

@@ -63,6 +63,14 @@ RSpec.describe Library, type: :model do
       expect(@devise.comments).to include(@comment)
       expect(@devise.comments).to_not include(@no_comment)
     end
+
+    it '#comments_count -> returns the number of comments on the library' do
+      expect(@devise.comments_count).to eq(2)
+    end
+    
+    it '#vote_count -> returns the total number of reviews' do
+      expect(@devise.vote_count).to eq(3)
+    end
     
   end
 
@@ -70,6 +78,10 @@ RSpec.describe Library, type: :model do
 
     it '#most_popular -> sorts by most popular' do
       expect(Library.most_popular.limit(3).pluck(:name)).to eq(["Devise", "CanCanCan", "Pundit"])
+    end
+
+    it '#most_recent -> sorts by updated at in descending order' do
+      expect(Library.most_recent).to eq(Library.order("updated_at DESC"))
     end
 
   end

@@ -52,6 +52,10 @@ RSpec.describe Language, type: :model do
 
       expect(Language.by_framework(@rails).most_popular.pluck(:name)).to eq(["CSS", "Ruby", "JavaScript"])
     end
+
+    it '#most_recent -> sorts by updated at in descending order' do
+      expect(Language.most_recent).to eq(Language.order("updated_at DESC"))
+    end
     
   end
 

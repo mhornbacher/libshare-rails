@@ -35,6 +35,10 @@ RSpec.describe Framework, type: :model do
       expect(@rails.average_rating).to eq(3.5)
     end
     
+    it '#most_recent -> sorts by updated at in descending order' do
+      expect(Framework.most_recent).to eq(Framework.order("updated_at DESC"))
+    end
+
   end
   
   describe "Scopes" do
