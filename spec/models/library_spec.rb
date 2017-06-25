@@ -25,7 +25,7 @@ RSpec.describe Library, type: :model do
   end
 
   describe "Relationships" do
-    let(:lib) {Library.create(name: "Omniauth")}
+    let(:lib) {Library.create(name: "Omniauth", framework: @rails, language: @ruby)}
 
     it "belongs to a framework" do
       lib.framework = Framework.create(name: "Sinatra")
@@ -89,22 +89,26 @@ RSpec.describe Library, type: :model do
   describe "Validations" do
 
     it 'validats that the name is present' do
-      expect(Library.new(name: "test")).to be_valid
-      expect(Library.new).to_not be_valid
+      @library = Library.new
+      @library.valid?
+
+      expect(@library.errors).to have_key(:name)
     end
     
     it 'validates that the documentation_url is valid' do
-      expect(Library.new(name: "t", documentation_url: "")).to be_valid
-      expect(Library.new(name: "t", documentation_url: "http://test.com")).to be_valid
-      expect(Library.new(name: "t", documentation_url: "https://test.com")).to be_valid
-      expect(Library.new(name: "t", documentation_url: "test.com")).to_not be_valid
+      @library = Library.new(name: "test")
+      @library.documentation_url = "test.com"
+      @library.valid?
+
+      expect(@library.errors).to have_key(:documentation_url)
     end
 
     it 'validates that the library_url is valid' do
-      expect(Library.new(name: "t", library_url: "")).to be_valid
-      expect(Library.new(name: "t", library_url: "http://test.com")).to be_valid
-      expect(Library.new(name: "t", library_url: "https://test.com")).to be_valid
-      expect(Library.new(name: "t", library_url: "test.com")).to_not be_valid
+      @library = Library.new(name: "test")
+      @library.library_url = "test.com"
+      @library.valid?
+
+      expect(@library.errors).to have_key(:library_url)
     end
 
   end

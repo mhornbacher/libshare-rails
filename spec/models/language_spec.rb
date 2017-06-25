@@ -16,9 +16,9 @@ RSpec.describe Language, type: :model do
     end
 
     it 'has_many libraries' do
-      lib = Library.create(name: "Omniauth", language: @ruby)
+      lib = Library.create(name: "Omniauth", language: @ruby, framework: @rails)
       expect(@ruby.libraries).to include(lib)
-      expect{Library.create(name: "omniauth-github", language: @ruby)}.to change {@ruby.libraries.count}.by(1)
+      expect{Library.create(name: "omniauth-github", language: @ruby, framework: @rails)}.to change {@ruby.libraries.count}.by(1)
     end
     
     it 'has_many frameworks through libraries' do

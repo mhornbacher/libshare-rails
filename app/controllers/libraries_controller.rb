@@ -19,21 +19,29 @@ class LibrariesController < ApplicationController
     def new
         @library = Library.new
         authorize @library
-        @review = @library.reviews.build
     end
     
     def edit
     end
 
     def create
-        binding.pry
+        @library = Library.create(post_params)
+        @library.valid? ? redirect_to(library_path(@library)) : render(:new)
     end
     
+    def update
+        @library.update(post_params)
+        @library.valid? ? redirect_to(library_path(@library)) : render(:edit)
+    end
     
     private
     def load_library
         @library = Library.find(params[:id])
         authorize @library
+    end
+
+    def post_params
+        params.require(:library).permit(:name, :version, :description, :documentation_url, :library_url, :language_id, :framework_id, :reviews_attributes => [:rating, :comment])
     end
     
 end

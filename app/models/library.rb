@@ -9,8 +9,6 @@ class Library < ActiveRecord::Base
   belongs_to :framework
   belongs_to :created_by, :class_name => "User"
 
-  accepts_nested_attributes_for :reviews
-
   # scope
   scope :most_popular, -> { joins(:reviews).group("libraries.id").order('COUNT("reviews.id") DESC').distinct }
 
@@ -19,10 +17,13 @@ class Library < ActiveRecord::Base
   validates :documentation_url, http_url: true
   validates :library_url, http_url: true
 
+  validates :language, presence: true
+  validates :framework, presence: true
+
   # review attributes
   def reviews_attributes=(review_attributes)
     review_attributes.each do |review_attribute|
-      review = Review.find_or_create(review_attribute)
+      review = Review.first_or_create(review_attribute)
       self.reviews << review
     end
   end

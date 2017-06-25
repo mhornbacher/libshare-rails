@@ -24,7 +24,7 @@
 
     <hr>
     <h3>Create First Review</h3>
-    <%= fields_for :review, @library.reviews.build do |review_form| %>
+    <%= f.fields_for :reviews, @library.reviews.build do |review_form| %>
         <%= render partial: 'reviews/form_internals', locals: {f: review_form} %>
     <% end %>
 

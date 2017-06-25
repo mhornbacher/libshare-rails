@@ -19,7 +19,7 @@ RSpec.describe Review, type: :model do
     end
 
     it 'belongs_to a library' do
-      review = Review.create(rating: 5, library: Library.create(name: "pry"))
+      review = Review.create(rating: 5, library: Library.create(name: "pry", language: Language.first, framework: Framework.first))
       expect(review.library).to eq(Library.last)
     end
     
