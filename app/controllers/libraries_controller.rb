@@ -7,7 +7,9 @@ class LibrariesController < ApplicationController
     end
 
     def most_popular
-        raise Library.most_popular.pluck(:name).inspect
+        @libraries =  Library.most_popular
+        @most_popular = true
+        render(:index)
     end
 
     def show
@@ -15,14 +17,23 @@ class LibrariesController < ApplicationController
     end
 
     def new
+        @library = Library.new
+        authorize @library
+        @review = @library.reviews.build
     end
     
     def edit
     end
+
+    def create
+        binding.pry
+    end
+    
     
     private
     def load_library
         @library = Library.find(params[:id])
+        authorize @library
     end
     
 end

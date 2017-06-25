@@ -1,0 +1,34 @@
+<%= render partial: "layouts/form_error", locals: {record: @library} %>
+
+<%= form_for(@library) do |f| %>
+
+    <%= labeled_text_field(f, :name) %>
+
+    <%= labeled_text_field(f, :version) %>
+
+    <%= labeled_text_field(f, :documentation_url) %>
+
+    <%= labeled_text_field(f, :library_url) %>
+
+    <%= f.label :description %>
+    <%= f.text_area :description, class: "form-control" %>
+
+    <%= f.label :language %>
+    <%= f.collection_select :language_id, Language.all, :id, :name, {prompt: true}, {class: "form-control"} %>
+
+    <%= f.label :framework %>
+    <%= f.collection_select :framework_id, Framework.all, :id, :name, {prompt: true}, {class: "form-control"} %>
+
+    <br>
+    <%= f.submit class: "btn btn-default" %>
+
+    <hr>
+    <h3>Create First Review</h3>
+    <%= fields_for :review, @library.reviews.build do |review_form| %>
+        <%= render partial: 'reviews/form_internals', locals: {f: review_form} %>
+    <% end %>
+
+    <br>
+    <%= f.submit class: "btn btn-default" %>
+
+<% end %>

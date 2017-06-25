@@ -13,8 +13,8 @@
     <div class="col-md-2">
         <h3>Details: </h3>
         <p>
-            <%= link_to "Documentation", @library.documentation_url %><br/> 
-            <%= link_to "Project page", @library.library_url %><br/> 
+            <%= link_to "Documentation", @library.documentation_url, class: "a-block" if @library.documentation_url%>
+            <%= link_to "Project page", @library.library_url, class: "a-block" if @library.library_url %>
             Language: <%= link_to(@library.language.name, language_path(@library.language)) %><br/> 
             Framework: <%= link_to(@library.framework.name, framework_path(@library.framework)) %>
         </p>

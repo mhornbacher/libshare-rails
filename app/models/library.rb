@@ -1,13 +1,15 @@
 class Library < ActiveRecord::Base
   include Averagable
   include Recentable
-
+  
   # Relationships
   has_many :reviews
 
   belongs_to :language
   belongs_to :framework
   belongs_to :created_by, :class_name => "User"
+
+  accepts_nested_attributes_for :reviews
 
   # scope
   scope :most_popular, -> { joins(:reviews).group("libraries.id").order('COUNT("reviews.id") DESC').distinct }
@@ -16,6 +18,14 @@ class Library < ActiveRecord::Base
   validates :name, presence: true
   validates :documentation_url, http_url: true
   validates :library_url, http_url: true
+
+  # review attributes
+  def reviews_attributes=(review_attributes)
+    review_attributes.each do |review_attribute|
+      review = Review.find_or_create(review_attribute)
+      self.reviews << review
+    end
+  end
 
   def comments
     self.reviews.where.not(comment: nil).where.not(comment: "")
