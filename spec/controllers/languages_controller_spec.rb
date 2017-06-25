@@ -47,11 +47,6 @@ RSpec.describe LanguagesController, type: :controller do
             lib = @language.libraries.first
             expect(response.body).to have_link(lib.name, href: library_path(lib))
         end
-        
-        it 'has edit and delete options' do
-            expect(response.body).to have_link("Edit", edit_language_path(@language))
-            expect(response.body).to have_link("Delete", language_path(@language))
-        end
 
     end
     
