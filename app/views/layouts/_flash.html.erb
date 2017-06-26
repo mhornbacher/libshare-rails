@@ -1,0 +1,9 @@
+<% if flash[:notice] %>
+    <%= content_tag :div, flash[:notice], class: "alert alert-info"%>
+<% elsif flash[:alert] %>
+    <%= content_tag :div, flash[:alert], class: "alert alert-danger"%>
+<% elsif flash[:warning] %>
+    <%= content_tag :div, flash[:warning], class: "alert alert-warning"%>
+<% elsif flash[:success] %>
+    <%= content_tag :div, flash[:success], class: "alert alert-success"%>
+<% end %>
