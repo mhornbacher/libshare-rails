@@ -17,7 +17,19 @@ class LibraryPolicy < ApplicationPolicy
     end
     
     def new?
-        user # we must have a user
+        create? # we must have a user
+    end
+    
+    def create?
+        user
+    end
+
+    def destroy?
+        user.admin?
+    end
+
+    def edit?
+        update?
     end
     
 end
