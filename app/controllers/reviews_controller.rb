@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
     before_action :load_review
+    before_action :authenticate_user!, :except => [:show, :index]
     
     def create
         review = Review.new(post_params)

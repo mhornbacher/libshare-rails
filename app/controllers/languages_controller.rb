@@ -1,6 +1,6 @@
 class LanguagesController < ApplicationController
-
     before_action :load_language, only: [:show, :edit, :update, :destroy]
+    before_action :authenticate_user!, :except => [:show, :index]
 
     def index
         @languages = Language.order('updated_at DESC')
@@ -34,6 +34,7 @@ class LanguagesController < ApplicationController
     private 
     def load_language
         @language = Language.find(params[:id])
+        authorize @language
     end
 
     def post_params

@@ -1,5 +1,6 @@
 class FrameworksController < ApplicationController
     before_action :load_framework, only: [:show, :edit, :update, :destroy]
+    before_action :authenticate_user!, :except => [:show, :index]
 
     def index
         @frameworks = Framework.most_recent
@@ -34,6 +35,7 @@ class FrameworksController < ApplicationController
     private 
     def load_framework
         @framework = Framework.find(params[:id])
+        authorize @framework
     end
 
     def post_params

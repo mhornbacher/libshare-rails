@@ -1,4 +1,4 @@
 <li>
-    <p><%= comment.user.display_name %> at <%= comment.updated_at %></p>
+    <p><strong><%= comment.user.display_name %> at <%= format_comment_time(comment.updated_at) %></strong></p>
     <p><%= comment.comment %></p>
 </li>
