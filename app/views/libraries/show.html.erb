@@ -21,13 +21,15 @@
         <%= edit_and_delete_links_for(@library) %>
     </div>
 </div>
+
 <hr>
+
 <% if @library.comment_count > 0 %>
-<h2>Comments</h2>
-<h5><%= link_to "all reviews", library_reviews_path(@library) %></h5>
-<ul>
-    <%= render partial: 'reviews/review_li', collection: @library.comments, as: :review %>
-</ul>
+    <h2>Comments</h2>
+    <h5><%= link_to "all reviews", library_reviews_path(@library) %></h5>
+    <ul>
+        <%= render partial: 'reviews/review_li', collection: @library.comments, as: :review %>
+    </ul>
 <% end %>
 
 <% if user_signed_in? %>
