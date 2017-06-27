@@ -8,7 +8,7 @@ Specs:
 - [x] The "through" part of the has_many through includes at least one user submittable attribute (library.name)
 - [x] Include reasonable validations for simple model objects (User, Library, Review, Framework, Language)
 - [x] Include a class level ActiveRecord scope method (Library.most_popular URL: /libraries/most_popular)
-- [x] Include a nested form writing to an associated model using a custom attribute writer (form URL, model name e.g. /libraries/new, Review)
+- [x] Include a nested form writing to an associated model using a custom attribute writer (/libraries/new, Review)
 - [x] Include signup (Devise)
 - [x] Include login (Devise)
 - [x] Include logout (Devise)
