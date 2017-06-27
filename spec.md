@@ -13,8 +13,8 @@ Specs:
 - [x] Include login (Devise)
 - [x] Include logout (Devise)
 - [x] Include third party signup/login (Devise/OmniAuth -> Github)
-- [ ] Include nested resource show or index (URL e.g. users/2/recipes)
-- [ ] Include nested resource "new" form (URL e.g. recipes/1/ingredients)
+- [x] Include nested resource show or index (index: libraries/2/reviews)
+- [x] Include nested resource "new" form (libraries/2/reviews/new)
 - [x] Include form display of validation errors (/frameworks/new)
 
 Confirm:
