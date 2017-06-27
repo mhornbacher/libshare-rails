@@ -1,4 +1,4 @@
-<%= form_for [@library, @comment] do |f| %>
+<%= form_for [lib, review] do |f| %>
     <%= render partial: 'reviews/form_internals', locals: {f: f} %>
     <%= f.submit class: "btn btn-default" %>
 <% end %>

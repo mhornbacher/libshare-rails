@@ -24,12 +24,13 @@
 <hr>
 <% if @library.comment_count > 0 %>
 <h2>Comments</h2>
-    <ul>
-    <%= render partial: 'reviews/comment_li', collection: @library.comments, as: :comment %>
-    </ul>
+<h5><%= link_to "all reviews", library_reviews_path(@library) %></h5>
+<ul>
+    <%= render partial: 'reviews/review_li', collection: @library.comments, as: :review %>
+</ul>
 <% end %>
 
 <% if user_signed_in? %>
-<h3>Create Comment</h3>
-<%= render 'reviews/inline_form' %>
+    <h3>Create Comment</h3>
+    <%= render partial: 'reviews/inline_form', locals: {lib: @library, review: @comment} %>
 <% end %>

@@ -1,0 +1,8 @@
+<h1>Reviews for <%= @library.name %></h1>
+<%= link_to "Create new review", new_library_review_path(@library), class: "btn btn-primary" %>
+<br><br>
+<ol>
+<% @reviews.each do |review| %>
+    <%= render partial: 'review_li', locals: {review: review}%>
+<% end %>
+</ol>

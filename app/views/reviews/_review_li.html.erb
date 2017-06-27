@@ -1,0 +1,14 @@
+<li class="review-li">
+    <p>
+        <strong>
+            <%= review.rating %> <span class="glyphicon glyphicon-star"></span> - 
+            <%= review.user.display_name %>
+        </strong> 
+        at <%= format_comment_time(review.updated_at) %>
+    </p>
+    <% if review.comment && !review.comment.blank? %>
+    <ul>
+        <li><%= review.comment %></li>
+    </ul>
+    <% end %>
+</li>

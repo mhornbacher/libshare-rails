@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get '/libraries/most_popular' => 'libraries#most_popular', as: :most_popular_libraries
 
   resources :libraries do
-    resources :reviews, only: [:create, :destroy]
+    resources :reviews, only: [:create, :destroy, :index, :new]
   end
 
   resources :frameworks
