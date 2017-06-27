@@ -52,6 +52,7 @@ RSpec.describe LanguagesController, type: :controller do
     
     describe '#new' do
         before(:each) do
+            sign_in User.first
             get :new
         end
 
@@ -65,6 +66,7 @@ RSpec.describe LanguagesController, type: :controller do
     describe '#edit' do
         before(:each) do
             @language = Language.first
+            sign_in User.first
             get :edit, id: @language.id
         end
 

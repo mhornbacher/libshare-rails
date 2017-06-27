@@ -48,12 +48,13 @@ RSpec.describe FrameworksController, type: :controller do
             expect(response.body).to have_link(lib.name, href: library_path(lib))
         end
 
-        # not working but works when tested by hand. Rspec not loading the page correctly
-        # context 'logged in as user' do
+        # # not working but works when tested by hand. Rspec not loading the page correctly
+        # describe 'logged in as user' do
         
         #     it 'has edit button' do
-        #         sign_in User.first
+        #         sign_in User.last
         #         get :show, id: @framework.id
+        #         binding.pry
         #         expect(response.body).to have_link("Edit", edit_framework_path(@framework))
         #     end
 
@@ -74,6 +75,7 @@ RSpec.describe FrameworksController, type: :controller do
     
     describe '#new' do
         before(:each) do
+            sign_in User.first
             get :new
         end
 
@@ -87,6 +89,7 @@ RSpec.describe FrameworksController, type: :controller do
     describe '#edit' do
         before(:each) do
             @framework = Framework.first
+            sign_in User.first
             get :edit, id: @framework.id
         end
 
