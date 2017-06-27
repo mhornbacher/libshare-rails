@@ -47,31 +47,41 @@ RSpec.describe FrameworksController, type: :controller do
             lib = @framework.libraries.first
             expect(response.body).to have_link(lib.name, href: library_path(lib))
         end
+    end
+    
 
-        # # not working but works when tested by hand. Rspec not loading the page correctly
-        # describe 'logged in as user' do
-        
-        #     it 'has edit button' do
-        #         sign_in User.last
-        #         get :show, id: @framework.id
-        #         binding.pry
-        #         expect(response.body).to have_link("Edit", edit_framework_path(@framework))
-        #     end
+    # # not working but works when tested by hand. Rspec not loading the page correctly
+    describe '#show -> logged in as user' do
+    
+        it 'has edit button' do
+            @framework = Framework.first
+            @user = User.first
 
-        # end
-        
-        # context 'logged in as admin' do
+            expect(@user.role).to eq("user")
 
-        #     it 'has edit and delete button' do
-        #         sign_in User.last
-        #         get :show, id: @framework.id
-        #         expect(response.body).to have_link("Edit", edit_framework_path(@framework))
-        #         expect(response.body).to have_link("Delete", framework_path(@framework))
-        #     end
-
-        # end
+            sign_in @user
+            get :show, id: @framework.id
+            expect(response.body).to have_link("Edit", edit_framework_path(@framework))
+        end
 
     end
+    
+    describe 'logged in as admin' do
+
+        it '#show -> has edit and delete button' do
+            @framework = Framework.first
+            @user = User.last
+
+            expect(@user.role).to eq("admin")
+
+            sign_in @user
+            get :show, id: @framework.id
+            expect(response.body).to have_link("Edit", edit_framework_path(@framework))
+            expect(response.body).to have_link("Delete", framework_path(@framework))
+        end
+
+    end
+
     
     describe '#new' do
         before(:each) do
