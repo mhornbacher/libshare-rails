@@ -61,7 +61,7 @@ RSpec.describe FrameworksController, type: :controller do
 
             sign_in @user
             get :show, id: @framework.id
-            expect(response.body).to have_link("Edit", edit_framework_path(@framework))
+            expect(response.body).to have_link("Edit", href: edit_framework_path(@framework))
         end
 
     end
@@ -76,8 +76,8 @@ RSpec.describe FrameworksController, type: :controller do
 
             sign_in @user
             get :show, id: @framework.id
-            expect(response.body).to have_link("Edit", edit_framework_path(@framework))
-            expect(response.body).to have_link("Delete", framework_path(@framework))
+            expect(response.body).to have_link("Edit", href: edit_framework_path(@framework))
+            expect(response.body).to have_link("Delete", href: framework_path(@framework))
         end
 
     end

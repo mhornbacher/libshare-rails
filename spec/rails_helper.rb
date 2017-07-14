@@ -40,7 +40,7 @@ RSpec.configure do |config|
   # config.include Capybara::DSL
 
   # this takes care of the devise user during testing. preventing some interesing errors
-  config.include Devise::TestHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :controller
   config.include FormHelpers, :type => :feature
 
   # this adds login_as(@user) and logout

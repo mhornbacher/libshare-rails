@@ -63,11 +63,7 @@ RSpec.describe User, type: :model do
 
     it 'email addresses are valid' do
 
-      user = User.new(email: "sam@sam")
-      user.valid?
-      expect(user.errors.messages).to include(:email)
-
-      user.email = "sam.net"
+      user = User.new(email: "sam.net")
       user.valid?
       expect(user.errors.messages).to include(:email)
       
