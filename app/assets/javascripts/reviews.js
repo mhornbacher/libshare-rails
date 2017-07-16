@@ -12,7 +12,7 @@ Comment.prototype.renderLi = function(){
     // create and fill int the template
     var res = "<li class='review-li'><p><strong>";
     res += this.rating + " <span class='glyphicon glyphicon-star'></span> - ";
-    res += this.user_name + "</strong> at";
+    res += this.user_name + "</strong> at ";
     res += this.updated_at + "</p>";
     // show the comment if it exists
     if (this.has_comment()){
