@@ -9,9 +9,9 @@ function Comment(review){
 Comment.prototype.renderLi = function(){
     var res = "<li class='review-li'><p><strong>";
     res += this.rating + " <span class='glyphicon glyphicon-star'></span> - ";
-    res += this.user_name + "</strong> at ";
+    res += this.user_name + "</strong> at";
+    res += this.updated_at + "</p>";
     if (this.has_comment()){
-        res += this.updated_at + "</p>";
         res += "<ul><li>" + this.comment + "</li></ul>";
     }
     res += "</li>"
@@ -51,7 +51,14 @@ function setUpForm(){
 function setUpLink(){
     $("#show_all").click(function(event){
         event.preventDefault();
-        debugger;
+        url = $(this).attr("href") + ".json"
+        $.get(url).done(function(data){
+            $("#comments_list").html("");
+            data.forEach(function(review){
+                var comment = new Comment(review);
+                $("#comments_list").append(comment.renderLi());
+            })
+        });
     });
 }
 
