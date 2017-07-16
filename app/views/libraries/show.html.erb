@@ -1,24 +1,29 @@
 <div class="row">
     <div class="col-md-10">
         <h1>
-            <%= @library.name %> | <span id="rating"><%= number_to_human(@library.average_rating) %></span> <span class="glyphicon glyphicon-star"></span>
+            <span id="lib-name"><%= @library.name %></span> |
+            <span id="rating"><%= number_to_human(@library.average_rating) %></span>
+            <span class="glyphicon glyphicon-star"></span>
         </h1>
-        <%= content_tag(:h4, ("version: #{@library.version}" if @library.version)) %>
+        <%= content_tag(:h4, ("version: #{@library.version}" if @library.version), id: "version") %>
         <h4 id="votes_box" >
             <span id="vote_count"><%= pluralize(@library.vote_count, "vote") %></span> | <span id="comment_count"><%= pluralize(@library.comment_count, "comment") %></span>
         </h4>
+        <%= link_to "next ->", library_next_path(@library), id: "next_link" %>
         <h3><b>Description:</b></h3>
-        <p><%= @library.description %></p>
+        <p id="description"><%= @library.description %></p>
     </div>
     <div class="col-md-2">
         <h3>Details: </h3>
         <p>
-            <%= link_to "Documentation", @library.documentation_url, class: "a-block" if @library.documentation_url%>
-            <%= link_to "Project page", @library.library_url, class: "a-block" if @library.library_url %>
-            Language: <%= link_to(@library.language.name, language_path(@library.language)) %><br/> 
-            Framework: <%= link_to(@library.framework.name, framework_path(@library.framework)) %>
+            <%# <%= link_to "Documentation", @library.documentation_url, class: "a-block", id: "documentation_link" if @library.documentation_url %>
+            <%#link_to "Project page", @library.library_url, class: "a-block", id: "project_link" if @library.library_url %>
+            Language: <%= link_to(@library.language.name, language_path(@library.language), id: "language_link") %><br/> 
+            Framework: <%= link_to(@library.framework.name, framework_path(@library.framework), id: "framework_link") %>
         </p>
-        <%= edit_and_delete_links_for(@library) %>
+        <div id="edit_buttons">
+            <%= edit_and_delete_links_for(@library) %>
+        </div>
     </div>
 </div>
 
