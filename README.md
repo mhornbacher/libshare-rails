@@ -14,7 +14,7 @@ A smaple website for keeping track of various libraries languages and frameworks
 
 ### Note 
 
-For github login support you will need GITHUB-KEY and GITHUB-SECRET set in your enviroment variables.
+For github login support you will need `GITHUB_KEY` and `GITHUB_SECRET` set in your enviroment variables.
 
 ## Contributing
 
