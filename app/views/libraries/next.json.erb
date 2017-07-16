@@ -1,0 +1,17 @@
+{
+    "library" : <%= ActiveModel::SerializableResource.new(@library).serializable_hash.to_json.html_safe %>,
+    "links": {
+        "language" : "<%= language_path(@library.language) %>",
+        "language_text": "<%= @library.language.name %>",
+        "framework" : "<%= framework_path(@library.framework) %>",
+        "framework_text": "<%= @library.framework.name %>",
+        "next" : "<%= library_next_path(@library) %>",
+        "reviews": "<%= library_reviews_path(@library) =%>"
+    },
+    "buttons": {
+        "edit": <%= policy(@library).update? %>,
+        "edit_path": "<%= edit_library_path(@library) %>",
+        "delete_path": "<%= library_path(@library) %>",
+        "delete": <%= current_user.admin? %>
+    }
+}
