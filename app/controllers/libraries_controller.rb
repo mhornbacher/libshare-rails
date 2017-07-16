@@ -1,6 +1,6 @@
 class LibrariesController < ApplicationController
     before_action :load_library, only: [:show, :edit, :update, :destroy]
-    before_action :authenticate_user!, :except => [:show, :index, :most_popular]
+    before_action :authenticate_user!, :except => [:show, :index, :most_popular, :next]
     
     def index
         @libraries = Library.most_recent
@@ -14,6 +14,25 @@ class LibrariesController < ApplicationController
 
     def show
         @comment = @library.reviews.build
+    end
+
+    def next
+        @library = Library.find(params[:id])
+        if @library.next.nil?
+            return respond_to do |format|
+                format.html {render :show}
+                format.json {render json: {"error": "no next library was found"}}
+            end
+        else
+            @library = @library.next
+        end
+        respond_to do |format|
+            format.html {
+                @comment = @library.reviews.build
+                render :show
+            }
+            format.json
+        end
     end
 
     def new
