@@ -1,11 +1,11 @@
 <div class="row">
     <div class="col-md-10">
         <h1>
-            <%= @library.name %> | <%= number_to_human(@library.average_rating) %> <span class="glyphicon glyphicon-star"></span>
+            <%= @library.name %> | <span id="rating"><%= number_to_human(@library.average_rating) %></span> <span class="glyphicon glyphicon-star"></span>
         </h1>
         <%= content_tag(:h4, ("version: #{@library.version}" if @library.version)) %>
-        <h4>
-            <%= pluralize(@library.vote_count, "vote") %> | <%= pluralize(@library.comment_count, "comment") %>
+        <h4 id="votes_box" >
+            <span id="vote_count"><%= pluralize(@library.vote_count, "vote") %></span> | <span id="comment_count"><%= pluralize(@library.comment_count, "comment") %></span>
         </h4>
         <h3><b>Description:</b></h3>
         <p><%= @library.description %></p>
@@ -24,13 +24,11 @@
 
 <hr>
 
-<% if @library.comment_count > 0 %>
-    <h2>Comments</h2>
-    <h5><%= link_to "all reviews", library_reviews_path(@library) %></h5>
-    <ul>
-        <%= render partial: 'reviews/review_li', collection: @library.comments, as: :review %>
-    </ul>
-<% end %>
+<h2>Comments</h2>
+<h5><%= link_to "all reviews (including just ratings)", library_reviews_path(@library), id: "show_all" %></h5>
+<ul id="comments_list">
+    <%= render partial: 'reviews/review_li', collection: @library.comments, as: :review %>
+</ul>
 
 <% if user_signed_in? %>
     <h3>Create Comment</h3>
