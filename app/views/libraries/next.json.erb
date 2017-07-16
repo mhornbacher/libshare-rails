@@ -12,6 +12,6 @@
         "edit": <%= policy(@library).update? %>,
         "edit_path": "<%= edit_library_path(@library) %>",
         "delete_path": "<%= library_path(@library) %>",
-        "delete": <%= current_user.admin? %>
+        "delete": <%= policy(@library).destroy? %>
     }
 }

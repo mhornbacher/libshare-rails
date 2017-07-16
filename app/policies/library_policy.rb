@@ -25,6 +25,7 @@ class LibraryPolicy < ApplicationPolicy
     end
 
     def destroy?
+        return false if user.nil?
         user.admin?
     end
 
