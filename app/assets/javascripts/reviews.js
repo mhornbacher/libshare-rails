@@ -1,3 +1,5 @@
+var show_all = false;
+
 // the comment object that contains its data and can be used for rendering
 function Comment(review){
     this.rating = review.rating;
@@ -43,7 +45,7 @@ function setUpForm(){
             // create the comment object
             var comment = new Comment(data["review"]);
             
-            if (comment.has_comment()){
+            if (comment.has_comment() || show_all){
                 $("#comments_list").append(comment.renderLi());
             }
         });
@@ -61,6 +63,7 @@ function setUpLink(){
                 $("#comments_list").append(comment.renderLi());
             })
         });
+        show_all = true;
     });
 }
 
