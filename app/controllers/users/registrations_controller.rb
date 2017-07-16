@@ -39,17 +39,22 @@ before_filter :configure_account_update_params, only: [:update]
   protected
 
   def update_resource(resource, params)
-    resource.update_without_password(params)
+    if resource.provider && resource.uid
+      params.delete("current_password")
+      resource.update_without_password(params)
+    else
+      resource.update_with_password(params)
+    end
   end
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.for(:sign_up) << :username
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-    devise_parameter_sanitizer.for(:account_update) << :username
+    devise_parameter_sanitizer.permit(:account_update, keys: [:username])
   end
 
   # The path used after sign up.
