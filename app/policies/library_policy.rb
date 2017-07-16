@@ -13,6 +13,7 @@ class LibraryPolicy < ApplicationPolicy
 
     def update?
         # admins and the user that made it
+        return false if user.nil?
         user.admin? || library.try(:created_by) == user if user
     end
     
