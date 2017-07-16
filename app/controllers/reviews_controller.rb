@@ -11,7 +11,7 @@ class ReviewsController < ApplicationController
         end
         respond_to do |format|
             format.html {redirect_to(library_path(@library))}
-            format.json {render "create.json"}
+            format.json {render "create.json"} # idk if the render is needed. TODO remove and find out
         end
     end
     
