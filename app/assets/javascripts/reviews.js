@@ -19,6 +19,9 @@ Comment.prototype.renderLi = function(){
 }
 
 Comment.prototype.has_comment = function(){
+    if (this.comment == null){
+        return false;
+    }
     return this.comment.length > 0;
 }
 
@@ -46,7 +49,10 @@ function setUpForm(){
 }
 
 function setUpLink(){
-    $("#show_all")
+    $("#show_all").click(function(event){
+        event.preventDefault();
+        debugger;
+    });
 }
 
 $(document).ready( function(){
