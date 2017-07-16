@@ -22,6 +22,10 @@ class ReviewsController < ApplicationController
 
     def index
         @reviews = @library.reviews.all
+        respond_to do |format|
+            format.html
+            format.json {render json: @reviews}
+        end
     end
     
     def new
