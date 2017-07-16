@@ -3,13 +3,16 @@ class ReviewsController < ApplicationController
     before_action :authenticate_user!, :except => [:index]
     
     def create
-        review = Review.new(post_params)
-        review.library = @library if @library
-        review.user = current_user
-        if !review.save
-            binding.pry
+        @review = Review.new(post_params)
+        @review.library = @library if @library
+        @review.user = current_user
+        if !@review.save
+            render json: {error_code: "400", message: "Invalid paramaters"}
         end
-        redirect_to(library_path(@library))
+        respond_to do |format|
+            format.html {redirect_to(library_path(@library))}
+            format.json {render "create.json"}
+        end
     end
     
     def destroy

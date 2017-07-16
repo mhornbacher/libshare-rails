@@ -1,0 +1,6 @@
+{
+    "review": <%= ActiveModel::SerializableResource.new(@review).serializable_hash.to_json.html_safe %>,
+    "average_rating": <%= number_to_human(@library.average_rating) %>,
+    "vote_count": "<%= pluralize(@library.vote_count, "vote") %>",
+    "comment_count": "<%= pluralize(@library.comment_count, "comment") %>"
+}
