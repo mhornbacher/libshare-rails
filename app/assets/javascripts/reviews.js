@@ -30,7 +30,7 @@ Comment.prototype.has_comment = function(){
 }
 
 function setUpForm(){
-    $("#new_review").submit(function(event) {
+    $("#new_review").on('submit', function(event) {
         event.preventDefault();
 
         var form = $(this);
@@ -53,7 +53,7 @@ function setUpForm(){
 }
 
 function setUpLink(){
-    $("#show_all").click(function(event){
+    $("#show_all").on('click', function(event){
         event.preventDefault();
         url = $(this).attr("href") + ".json"
         $.get(url).done(function(data){
@@ -65,6 +65,7 @@ function setUpLink(){
         });
         show_all = true;
     });
+    console.log("link setup")
 }
 
 $(document).ready( function(){
