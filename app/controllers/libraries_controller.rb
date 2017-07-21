@@ -4,6 +4,13 @@ class LibrariesController < ApplicationController
     
     def index
         @libraries = Library.most_recent
+        if params[:framework_id]
+            @libraries = Framework.find(params[:framework_id]).libraries
+            respond_to do |f|
+                f.html {redirect_to libraries_path}
+                f.json {render json: @libraries, each_serializer: LiLibrarySerializer}
+            end
+        end
     end
 
     def most_popular
