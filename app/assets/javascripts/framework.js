@@ -1,9 +1,9 @@
 
-function LineItem({name, average_rating, path, description}){
-    this.name = name
-    this.average_rating = average_rating;
-    this.description = description;
-    this.path = path;
+function LineItem(review){
+    this.name = review.name
+    this.average_rating = review.average_rating;
+    this.description = review.description;
+    this.path = review.path;
 }
 
 LineItem.prototype.render = function() {
