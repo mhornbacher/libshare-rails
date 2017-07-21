@@ -9,7 +9,9 @@ Rails.application.routes.draw do
     resources :reviews, only: [:create, :destroy, :index, :new]
   end
 
-  resources :frameworks
+  resources :frameworks do
+    resources :libraries, only: :index
+  end
 
   resources :languages
 
